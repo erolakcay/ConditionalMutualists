@@ -1,6 +1,10 @@
 (* ::Package:: *)
 
 (* ::Text:: *)
+(*This file is `hostControlAD.wl`.*)
+
+
+(* ::Text:: *)
 (*This script contains functions for calculating the direction of transmission mode evolution when hosts control transmission.*)
 
 

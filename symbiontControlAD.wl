@@ -1,6 +1,10 @@
 (* ::Package:: *)
 
 (* ::Text:: *)
+(*This file is `symbiontControlAD.wl`.*)
+
+
+(* ::Text:: *)
 (*This script contains functions for calculating the direction of transmission mode evolution when symbionts control transmission.*)
 
 
@@ -28,12 +32,12 @@ arrivalPI[iP_, iQ_,  vres_, d_, fPU_, fPI_, fQU_, fQI_] :=
 (1/fbar[iP, iQ, fPU, fPI, fQU, fQI] )* ((1 - d) * vres * fPI * iP + d * vres * fQI * iQ)
 
 
-arrivalQU::usage = "arrivalPI[iP, iQ, vres, d, fPU, fPI, fQU, fQI] gives the probability an uninfected newborn arrives in patch Q. It takes as input the fraction of infected hosts in each patch (iP and iQ), the resident's vertical transmission rate (vres), the host dispersal rate (d), and the fecundities (fPU, fPI, fQU, fQI) of uninfected and infected (indicated by U and I) hosts in patches P and Q.";
+arrivalQU::usage = "arrivalQU[iP, iQ, vres, d, fPU, fPI, fQU, fQI] gives the probability an uninfected newborn arrives in patch Q. It takes as input the fraction of infected hosts in each patch (iP and iQ), the resident's vertical transmission rate (vres), the host dispersal rate (d), and the fecundities (fPU, fPI, fQU, fQI) of uninfected and infected (indicated by U and I) hosts in patches P and Q.";
 arrivalQU[iP_, iQ_, vres_, d_, fPU_, fPI_, fQU_, fQI_] :=
 (1/fbar[iP, iQ, fPU, fPI, fQU, fQI] )* (d * (fPU * (1 - iP) + (1 - vres) * fPI * iP) + (1 - d) * (fQU * (1 - iQ) + (1 - vres) * fQI * iQ))
 
 
-arrivalQU::usage = "arrivalPI[iP, iQ, vres, d, fPU, fPI, fQU, fQI] gives the probability an infected newborn arrives in patch Q. It takes as input the fraction of infected hosts in each patch (iP and iQ), the resident's vertical transmission rate (vres), the host dispersal rate (d), and the fecundities (fPU, fPI, fQU, fQI) of uninfected and infected (indicated by U and I) hosts in patches P and Q.";
+arrivalQI::usage = "arrivalQI[iP, iQ, vres, d, fPU, fPI, fQU, fQI] gives the probability an infected newborn arrives in patch Q. It takes as input the fraction of infected hosts in each patch (iP and iQ), the resident's vertical transmission rate (vres), the host dispersal rate (d), and the fecundities (fPU, fPI, fQU, fQI) of uninfected and infected (indicated by U and I) hosts in patches P and Q.";
 arrivalQI[iP_, iQ_,  vres_, d_, fPU_, fPI_, fQU_, fQI_] :=
 (1/fbar[iP, iQ, fPU, fPI, fQU, fQI] )* (d * vres * fPI * iP + (1 -d) *vres * fQI * iQ)
 
@@ -56,7 +60,7 @@ deathSymbiont[iP_, iQ_, hres_, vres_, d_, c_, fPU_, fPI_, fQU_, fQI_, sPU_, sPI_
 {{(arrivalPU[iP, iQ, vres, d, fPU, fPI, fQU, fQI] * ((1 - hres * iP) ^ c * sPU + (1 - (1 - hres * iP)^c) * sPI) + arrivalPI[iP, iQ, vres, d, fPU, fPI, fQU, fQI] * sPI) * mPI/mbar[iP, mPU, mPI],
 0},
 {0,
-(arrivalQU[iP, iQ, vres, d, fPU, fPI, fQU, fQI] * ((1 - hres * iQ) ^ c * sQU + (1 - (1 - hres * iQ)^c) * sQI) + arrivalQI[iP, iQ, vres, d, fPU, fPI, fQU, fQI] * sQI) * mQU/mbar[iQ, mQU, mQI]}}
+(arrivalQU[iP, iQ, vres, d, fPU, fPI, fQU, fQI] * ((1 - hres * iQ) ^ c * sQU + (1 - (1 - hres * iQ)^c) * sQI) + arrivalQI[iP, iQ, vres, d, fPU, fPI, fQU, fQI] * sQI) * mQI/mbar[iQ, mQU, mQI]}}
 
 
 (* ::Text:: *)

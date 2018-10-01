@@ -1,5 +1,13 @@
 (* ::Package:: *)
 
+(* ::Text:: *)
+(*This file is `adaptiveDynamicsFunctions.wl`.*)
+
+
+(* ::Text:: *)
+(*This script contains functions for determining the direction of host or symbiont evolution and evolutionary trajectories.*)
+
+
 BeginPackage["adaptiveDynamicsFunctions`"]
 
 

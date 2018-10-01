@@ -1,3 +1,4 @@
+# This file is `HostControlMain_N1000.jl`.
 # Purpose of this is to simulation transmission evolution when host population size
 # is larger (1000)
 # This code is meant to run many simulations in parallel -- run with

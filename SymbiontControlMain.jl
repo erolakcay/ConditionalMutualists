@@ -1,3 +1,4 @@
+# This file is `SymbiontControlMain.jl`.
 # Purpose of this is to simulation transmission evolution in a finite population of symbionts
 # This code is meant to run many simulations in parallel -- run with
 #    "julia -p # SymbiontControlMain.jl", where # is the number of cores to use

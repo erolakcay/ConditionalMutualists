@@ -1,5 +1,8 @@
-#!/usr/bin/env wolframscript
 (* ::Package:: *)
+
+(* ::Text:: *)
+(*This file is `ecologicalEquilibrium.wl`.*)
+
 
 (* ::Text:: *)
 (*This script contains functions for finding the ecological equilibrium fraction of infected hosts. These functions work for both host and symbiont control of transmission evolution, since the ecological equilibrium for a monomorphic population is not affected by which partner controls transmission evolution.*)
@@ -27,7 +30,7 @@ Begin["`Private`"]
 (*The functions fbar and mbar finds the average host fecundity and mortality, respectively. fbar takes as input the fraction of infected hosts in each patch (iP and iQ) as well as the fecundity of uninfected and infected hosts in each patch (fPU, fPI, fQU, fQI), where P or Q indicate the patch, and U and I indicate uninfected or infected hosts, respectively. mbar takes as input the fraction of infected hosts in one patch (iP for a generic patch) and the mortality of uninfected and infected hosts in that patch (mPU and mPI).*)
 
 
-fbar[iP_, iQ_, fPU_, fPI_, fQU_, fQI_] := fPU * (1 - iP) + fPI * iP + fQU * (1 - iQ) + fQI * iQ
+fbar[iP_, iQ_, fPU_, fPI_, fQU_, fQI_] := (fPU * (1 - iP) + fPI * iP + fQU * (1 - iQ) + fQI * iQ)/2
 
 
 mbar[iP_, mPU_, mPI_] := mPU * (1 - iP) + mPI * iP
