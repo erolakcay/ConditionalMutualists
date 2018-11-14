@@ -23,11 +23,51 @@ ParallelNeeds["symbiontControlAD`"]
 ParallelNeeds["plottingFunctions`"]
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Plots of simulation results*)
 
 
-(* ::Subsection:: *)
+(* ::Text:: *)
+(*Check for summary files needed to plot simulation results. Run simulations in Julia using HostControlMain_N200.jl, HostControlMain_N1000.jl, HostControlMain_3Patches.jl, and SymbiontControlMain.jl. Then create summary files by running summarize_simulations.py in Python.*)
+
+
+summaryFiles = {"Simulation results/Host_Control_f_1-0_s_1-0_m_0-5_d_0-005_summary.csv",
+"Simulation results/Host_Control_f_1-0_s_1-0_m_0-5_d_0-05_summary.csv",
+"Simulation results/Host_Control_f_1-0_s_1-0_m_0-5_d_0-5_summary.csv",
+"Simulation results/Host_Control_f_0-5_s_1-0_m_1-0_d_0-005_summary.csv",
+"Simulation results/Host_Control_f_0-5_s_1-0_m_1-0_d_0-05_summary.csv",
+"Simulation results/Host_Control_f_0-5_s_1-0_m_1-0_d_0-5_summary.csv",
+"Simulation results/Host_Control_N_1000_f_1-0_s_0-5_m_1-0_d_0-005_summary.csv",
+"Simulation results/Host_Control_N_1000_f_1-0_s_0-5_m_1-0_d_0-05_summary.csv",
+"Simulation results/Host_Control_N_1000_f_1-0_s_0-5_m_1-0_d_0-5_summary.csv",
+"Simulation results/Host_Control_N_1000_f_0-5_s_1-0_m_1-0_d_0-005_summary.csv",
+"Simulation results/Host_Control_N_1000_f_0-5_s_1-0_m_1-0_d_0-05_summary.csv",
+"Simulation results/Host_Control_N_1000_f_0-5_s_1-0_m_1-0_d_0-5_summary.csv",
+"Simulation results/Symbiont_Control_f_1-0_s_0-5_m_1-0_d_0-005_summary.csv",
+"Simulation results/Symbiont_Control_f_1-0_s_0-5_m_1-0_d_0-05_summary.csv",
+"Simulation results/Symbiont_Control_f_1-0_s_0-5_m_1-0_d_0-5_summary.csv",
+"Simulation results/Symbiont_Control_f_0-5_s_1-0_m_1-0_d_0-005_summary.csv",
+"Simulation results/Symbiont_Control_f_0-5_s_1-0_m_1-0_d_0-05_summary.csv",
+"Simulation results/Symbiont_Control_f_0-5_s_1-0_m_1-0_d_0-5_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-6667_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-6667_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-6667_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-6667_summary.csv"};
+
+If[!DirectoryQ["Simulation results"], Print["Error in plotting simulation results. Results not detected."]; Pause[10];,
+If[!AllTrue[summaryFiles, FileExistsQ],
+Print["Error in plotting simulation results. Summary files not detected. Run summarize_simulations.py in Python."]; Pause[10];]]
+
+
+(* ::Subsection::Closed:: *)
 (*Host control, population size 200, transmission rates (main text)*)
 
 
@@ -57,7 +97,7 @@ Alphabet[][[pos++]] <> ")", {{Left, Top}}]&, #, {2}]], 2],
 Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&,  ImageResolution -> 600];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Host control, population size 200, fraction of infected hosts (supplement)*)
 
 
@@ -97,7 +137,7 @@ Alphabet[][[pos++]] <> ")", {{Left, Top}}]&, #, {2}]], 2],
 Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&, ImageResolution -> 300];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Host control, population size 1000 (supplement)*)
 
 
@@ -137,7 +177,7 @@ Alphabet[][[pos++]] <> ")", {{Left, Top}}]&, #, {2}]], 2],
 Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&, ImageResolution -> 300];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Symbiont control, population size 200 (supplement)*)
 
 
@@ -171,35 +211,35 @@ Alphabet[][[pos++]] <> ")", {{Left, Top}}]&, #, {2}]], 2],
 Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&, ImageResolution -> 300];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Host control, unequal numbers of M and P patches*)
 
 
-plotsEstSimsHostInfectedMoreM = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-005_summary.csv",
-"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-05_summary.csv",
-"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-5_summary.csv"}];
+plotsEstSimsHostInfectedMoreM = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_1-0_s_0-5_m_1-0_d_0-6667_summary.csv"}];
 
 
-plotsFecSimsHostInfectedMoreM = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-005_summary.csv",
-"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-05_summary.csv",
-"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-5_summary.csv"}];
+plotsFecSimsHostInfectedMoreM = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_M-patches_f_0-5_s_1-0_m_1-0_d_0-6667_summary.csv"}];
 
 
-plotsEstSimsHostInfectedMoreP = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-005_summary.csv",
-"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-05_summary.csv",
-"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-5_summary.csv"}];
+plotsEstSimsHostInfectedMoreP = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_1-0_s_0-5_m_1-0_d_0-6667_summary.csv"}];
 
 
-plotsFecSimsHostInfectedMoreP = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-005_summary.csv",
-"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-05_summary.csv",
-"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-5_summary.csv"}];
+plotsFecSimsHostInfectedMoreP = ParallelMap[plotSimTransmissionAndInfection[#, 2]&, {"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-0067_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-0667_summary.csv",
+"Simulation results/Host_Control_More_P-patches_f_0-5_s_1-0_m_1-0_d_0-6667_summary.csv"}];
 
 
 (* ::Text:: *)
 (*Unequal M and P patches when symbiont affects lifespan (Supplement figure 14)*)
 
 
-Export["MoreMorPpatches_establishment.pdf",
+Export["Figures/MoreMorPpatches_establishment.pdf",
 Join[Transpose[plotsEstSimsHostInfectedMoreM], Transpose[plotsEstSimsHostInfectedMoreP]] //
 Grid[Join[{{ "", "", "", Item["d = 0.0067", Background -> Lighter[Gray]], Item["d = 0.067", Background -> Lighter[Lighter[Gray]]], Item["d = 0.67", Background -> LightGray]}},
 Join[{{Item[Rotate["M-patches more common", 90Degree], Background -> Lighter[Gray]],  
@@ -219,7 +259,7 @@ Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&, ImageResolution -> 30
 (*Unequal M and P patches when symbiont affects fecundity (Supplement figure 15)*)
 
 
-Export["MoreMorPpatches_fecundity.pdf",
+Export["Figures/MoreMorPpatches_fecundity.pdf",
 Join[Transpose[plotsFecSimsHostInfectedMoreM], Transpose[plotFecSimsHostInfectedMoreP]] //
 Grid[Join[{{ "", "", "", Item["d = 0.0067", Background -> Lighter[Gray]], Item["d = 0.067", Background -> Lighter[Lighter[Gray]]], Item["d = 0.67", Background -> LightGray]}},
 Join[{{Item[Rotate["M-patches more common", 90Degree], Background -> Lighter[Gray]],  
@@ -239,7 +279,7 @@ Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&, ImageResolution -> 30
 (*Symbiont affects one fitness component symmetrically*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Calculations*)
 
 
@@ -292,7 +332,7 @@ Join[Prepend[params, d -> disp], {equil  -> eq, coordEquil -> coord, dGrowthHost
 Export["wdx/resultsMortAlone.wdx", resultsMortAlone];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Figures*)
 
 
@@ -494,7 +534,7 @@ If[(Norm[#3] == 0) || (Norm[#4] == 0), 0, (#3 . #4)/(Norm[#3] * Norm[#4]), -0.99
 Chop[Flatten[Map[First, (dGrowthSymb/. #), {2}], 1]]}]&, resultsMortAlone];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Figure*)
 
 
@@ -530,7 +570,7 @@ BaseStyle -> myFontStyle, Alignment -> {Center, Center}]&, ImageResolution -> 30
 (*Symbiont affects fecundity asymmetrically*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Calculations*)
 
 
@@ -550,7 +590,7 @@ Join[Prepend[params, d -> disp], {equil  -> eq, coordEquil -> coord, dGrowthHost
 Export["wdx/resultsFecAloneMoreBen.wdx", resultsFecAloneMoreBen];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Figure*)
 
 
@@ -642,7 +682,7 @@ Join[Prepend[params, d -> disp], {equil  -> eq, coordEquil -> coord, dGrowthHost
 Export["wdx/resultsEstWeakFecOppositeDirection.wdx", resultsEstWeakFecOppositeDirection];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Figures*)
 
 
@@ -749,7 +789,7 @@ Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&,  ImageResolution -> 6
 (*Symbiont asymmetrically affects lifespan, has unconditional fecundity cost*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Calculations*)
 
 
@@ -775,7 +815,7 @@ Join[Prepend[params, d -> disp], {equil  -> eq, coordEquil -> coord, dGrowthHost
 Export["wdx/resultsEstConditMoreBenFecCost.wdx", resultsEstConditMoreBenFecCost];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Figures*)
 
 
@@ -806,7 +846,7 @@ Alphabet[][[pos++]] <> ")", {{Left, Top}}]&, #, {2}]], 2],
 Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&,  ImageResolution -> 600];
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Basic reproductive number*)
 
 
@@ -851,7 +891,7 @@ r0EstAlone = Table[ReleaseHold[Hold[Table[expectedR0[equil[[hind, vind,eqind, 1]
 r0MortAlone = Table[ReleaseHold[Hold[Table[expectedR0[equil[[hind, vind,eqind, 1]],equil[[ hind, vind,eqind, 2]], coordEquil[[hind, vind, 1]], coordEquil[[hind, vind, 2]], d, c, fPU, fPI, fQU, fQI, sPU, sPI, sQU, sQI, mPU, mPI, mQU, mQI], {hind, Length[equil]}, {vind, Length[equil[[hind]]]},{eqind, Length[equil[[hind, vind]]]}]]/. resultsMortAlone[[i]]], {i, Length[resultsMortAlone]}];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Plots*)
 
 
@@ -861,16 +901,16 @@ myColorsR0[f_] := ColorData["Candy"][f/Max[{Max[r0FecAlone], Max[r0EstAlone], Ma
 myR0Legend = BarLegend[{myColorsR0[#]&,{0,Max[{Max[r0FecAlone], Max[r0EstAlone], Max[r0MortAlone]}]}}, LegendLayout -> "Row",LabelStyle -> myFontStyle, Method -> {AxesStyle -> Black, TicksStyle -> Black}, LegendMarkerSize -> 400];
 
 
-r0FecAlonePlots = Table[plotR0altColor[(equil/. resultsFecAlone[[i]]),(coordEquil/. resultsFecAlone[[i]]), r0FecAlone[[i]], myColorsR0, myFontStyle, False], {i, Length[resultsFecAlone]}];
+r0FecAlonePlots = Table[plotR0[(equil/. resultsFecAlone[[i]]),(coordEquil/. resultsFecAlone[[i]]), r0FecAlone[[i]], myColorsR0, myFontStyle, False], {i, Length[resultsFecAlone]}];
 
 
-r0EstAlonePlots = Table[plotR0altColor[(equil/. resultsEstAlone[[i]]),(coordEquil/. resultsEstAlone[[i]]), r0EstAlone[[i]], myColorsR0, myFontStyle, False], {i, Length[resultsEstAlone]}];
+r0EstAlonePlots = Table[plotR0[(equil/. resultsEstAlone[[i]]),(coordEquil/. resultsEstAlone[[i]]), r0EstAlone[[i]], myColorsR0, myFontStyle, False], {i, Length[resultsEstAlone]}];
 
 
-r0MortAlonePlots = Table[plotR0altColor[(equil/. resultsMortAlone[[i]]),(coordEquil/. resultsMortAlone[[i]]), r0MortAlone[[i]], myColorsR0, myFontStyle, False], {i, Length[resultsMortAlone]}];
+r0MortAlonePlots = Table[plotR0[(equil/. resultsMortAlone[[i]]),(coordEquil/. resultsMortAlone[[i]]), r0MortAlone[[i]], myColorsR0, myFontStyle, False], {i, Length[resultsMortAlone]}];
 
 
-Export["r0.pdf", {r0EstAlonePlots,r0MortAlonePlots,r0FecAlonePlots}//Grid[Join[{{ "", "", "", Item["d = 0.005", Background -> Lighter[Gray]], Item["d = 0.05", Background -> Lighter[Lighter[Gray]]], Item["d = 0.5", Background -> LightGray]}},
+Export["Figures/r0.pdf", {r0EstAlonePlots,r0MortAlonePlots,r0FecAlonePlots}//Grid[Join[{{ "", "", "", Item["d = 0.005", Background -> Lighter[Gray]], Item["d = 0.05", Background -> Lighter[Lighter[Gray]]], Item["d = 0.5", Background -> LightGray]}},
 Join[{{Item[Rotate["Symbiont Affects...", 90Degree], Background -> Lighter[LightGray]],  
 	Item[Rotate["Establishment", 90 Degree], Background -> Lighter[Gray]], Rotate["Vert. Trans. Prob.", 90 Degree]}, 
 {SpanFromAbove, Item[Rotate["Mortality", 90 Degree], Background -> Lighter[Lighter[Gray]]], Rotate["Vert. Trans. Prob.", 90 Degree]}, 
@@ -883,7 +923,7 @@ Alphabet[][[pos++]] <> ")", {{Left, Top}}]&, #, {2}]], 2],
 Alignment -> {Center, Center}, BaseStyle -> myFontStyle]&, ImageResolution -> 600];
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Comparing establishment and mortality effects*)
 
 

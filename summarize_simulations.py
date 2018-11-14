@@ -62,7 +62,7 @@ def patchreplaceTwoPatches(patchID):
     return patchID
 
 #### for naming patches in simulations with 3 patches
-def patchreplace(regime, patchID):
+def patchreplaceThreePatches(regime, patchID):
         if regime == "P-patch 1, M-patches 2 & 3":
             if patchID == 1:
                 return "P"
@@ -76,14 +76,52 @@ def patchreplace(regime, patchID):
         return patchID
 
 
-### Example:
-# for fx in ("f = 0.5, s = 1.0, m = 1.0", "f = 1.0, s = 0.5, m = 1.0", "f = 1.0, s = 1.0, m = 0.5"):
-#     for d in ("0.005", "0.05", "0.5"):
-#         simulationsummary(["Host_Control_rep" + rep + "/"
-#                    "/" + fx + "/d = " + d + "/N = 200, patches = 2" for
-#                      rep in ("a", "b", "c", "d",
-#                    "e", "f", "g", "h", "i", "j")],
-#                    "Host_Control_" + fx.replace(" = ", "_").replace(".", "-").replace(", ", "_") + "_d_" +
-#                   d.replace(".", "-") + "_summary.csv",
-#                  patchreplaceTwoPatches, lambda x: "\"" + x[-20:-16] + x[-8:-4] + "\"")
-#
+#### Summarizing results for Host Control, N = 200 case (main text):
+# Simulations produced by running HostControlMain_200.jl
+for fx in ("f = 0.5, s = 1.0, m = 1.0", "f = 1.0, s = 0.5, m = 1.0", "f = 1.0, s = 1.0, m = 0.5"):
+    for d in ("0.005", "0.05", "0.5"):
+        simulationsummary(["Simulation results/Host_Control_rep_" + rep + "/" +
+            fx + "/d = " + d + "/N = 200, patches = 2" for
+            rep in ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")],
+            "Simulation results/Host_Control_" +
+            fx.replace(" = ", "_").replace(".", "-").replace(", ", "_") + "_d_" +
+            d.replace(".", "-") + "_summary.csv",
+            patchreplaceTwoPatches, lambda x: "\"" + x[-20:-16] + x[-8:-4] + "\"")
+
+#### Summarizing results for Host Control, N = 1000 case:
+# Simulations produced by running HostControlMain_N1000.jl
+for fx in ("f = 0.5, s = 1.0, m = 1.0", "f = 1.0, s = 0.5, m = 1.0"):
+    for d in ("0.005", "0.05", "0.5"):
+        simulationsummary(["Simulation results/Host_Control_large_pop_rep_" + rep + "/" +
+            fx + "/d = " + d + "/N = 1000, patches = 2" for
+            rep in ("a", "b", "c", "d", "e")],
+            "Simulation results/Host_Control_N_1000_" +
+            fx.replace(" = ", "_").replace(".", "-").replace(", ", "_") + "_d_" +
+            d.replace(".", "-") + "_summary.csv",
+            patchreplaceTwoPatches, lambda x: "\"" + x[-20:-16] + x[-8:-4] + "\"")
+
+#### Summarizing results for Symbiont Control case:
+# Simulations produced by running SymbiontControlMain.jl
+for fx in ("f = 0.5, s = 1.0, m = 1.0", "f = 1.0, s = 0.5, m = 1.0"):
+    for d in ("0.005", "0.05", "0.5"):
+        simulationsummary(["Simulation results/Symbiont_Control/" +
+            fx + "/d = " + d + "/N = 200, patches = 2"],
+            "Simulation results/Symbiont_Control_" +
+            fx.replace(" = ", "_").replace(".", "-").replace(", ", "_") + "_d_" +
+            d.replace(".", "-") + "_summary.csv",
+            patchreplaceTwoPatches, lambda x: "\"" + x[-20:-16] + x[-8:-4] + "\"")
+
+#### Summarizing results for unequal number of M and P patches case:
+# Simulations produced by running HostControlMain_3Patches.jl
+for regime in ("P-patches 1 & 2, M-patch 3", "P-patch 1, M-patches 2 & 3"):
+    for fx in ("f = 0.5, s = 1.0, m = 1.0", "f = 1.0, s = 0.5, m = 1.0"):
+        for d in ("0.0067", "0.0667", "0.6667"):
+            simulationsummary(["Simulation results/Host_Control_3_patches_rep_" + rep + "/" +
+                fx + "/d = " + d + "/N = 300, " + regime for rep in ("a", "b")],
+                "Simulation results/Host_Control_" +
+                [["unknown_regime_", "More_M-patches_"][regime == "P-patch 1, M-patches 2 & 3"],
+                    "More_P-patches_"][regime == "P-patches 1 & 2, M-patch 3"] +
+                fx.replace(" = ", "_").replace(".", "-").replace(", ", "_") + "_d_" +
+                d.replace(".", "-") + "_summary.csv",
+                lambda patchID: patchreplaceThreePatches(regime, patchID),
+                lambda x: "\"" + x[-20:-16] + x[-8:-4] + "\"")

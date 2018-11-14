@@ -32,16 +32,16 @@
 # - replist = an identifier for each replicate of the simulation
 # - filelist = names of the files to save the simulation results in
 
-@everywhere flist = [f for r=1:10 for f=(0.5, 1.0) for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere slist = [s for r=1:10 for s=(1.0, 0.5) for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere mlist = [m for r=1:10 for m=(1.0, 1.0) for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere dlist = Float64[d for r=1:10 for fsm=1:2 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere nlist = Int[n for r=1:10 for fsm=1:2 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere patchlist = Int[p for r=1:10 for fsm=1:2 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere hlist = Float64[h for r=1:10 for fsm=1:2 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere vlist = Float64[v for r=1:10 for fsm=1:2 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere flist = [f for r=1:10 for f=(0.5, 1.0, 1.0) for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere slist = [s for r=1:10 for s=(1.0, 0.5, 1.0) for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere mlist = [m for r=1:10 for m=(1.0, 1.0, 0.5) for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere dlist = Float64[d for r=1:10 for fsm=1:3 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere nlist = Int[n for r=1:10 for fsm=1:3 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere patchlist = Int[p for r=1:10 for fsm=1:3 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere hlist = Float64[h for r=1:10 for fsm=1:3 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+@everywhere vlist = Float64[v for r=1:10 for fsm=1:3 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
 @everywhere replist = [r for r=("a", "b", "c", "d", "e", "f", "g", "h", "i", "j") for
-	fsm=1:2 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
+	fsm=1:3 for d=(0.005, 0.05, 0.5) for n=(200) for p=(2) for h=0:0.1:1 for v=0:0.1:1]
 @everywhere filelist = ["Simulation results/Host_Control_rep_$(replist[i])/f = $(flist[i]), s = $(slist[i]), m = $(mlist[i])/d = $(dlist[i])/N = $(nlist[i]), patches = $(patchlist[i])/hinit = $(hlist[i]), vinit = $(vlist[i]).csv" for i=1:length(dlist)]
 
 

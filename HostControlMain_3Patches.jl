@@ -43,7 +43,7 @@
 @everywhere vlist = Float64[v for r=1:2 for fsm=1:2 for d=((1/150), (1/15), (2/3)) for n=(300) for pM=(true, false) for h=0:0.1:1 for v=0:0.1:1]
 @everywhere replist = [r for r=("a", "b") for
 	fsm=1:2 for d=((1/150), (1/15), (2/3)) for n=(300) for pM=(true, false) for h=0:0.1:1 for v=0:0.1:1]
-@everywhere filelist = ["Simulation results/Host_Control_3_patches_rep_$(replist[i])/f = $(flist[i]), s = $(slist[i]), m = $(mlist[i])/d = $(dlist[i])/N = $(nlist[i]), $(["P-patches 1 & 2, M-patch 3" "P-patch 1, M-patches 2 & 3"][pMlist[i] + 1])/hinit = $(hlist[i]), vinit = $(vlist[i]).csv" for i=1:length(dlist)]
+@everywhere filelist = ["Simulation results/Host_Control_3_patches_rep_$(replist[i])/f = $(flist[i]), s = $(slist[i]), m = $(mlist[i])/d = $(round(dlist[i], 4))/N = $(nlist[i]), $(["P-patches 1 & 2, M-patch 3" "P-patch 1, M-patches 2 & 3"][pMlist[i] + 1])/hinit = $(hlist[i]), vinit = $(vlist[i]).csv" for i=1:length(dlist)]
 
 # This function initializes and runs a single simulation
 # Input:
